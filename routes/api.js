@@ -10,7 +10,7 @@ var mongodb = require('mongodb');
 var DB_URI = 'mongodb://localhost:27017/AaaS';
 
 //var MongoClient = mongodb.MongoClient;
-mongoose.connect(DB_URI);
+//mongoose.connect(DB_URI);
 
 var User1 = mongoose.model('User',{username:String, password:String});
 var loggedUser = "";
@@ -25,7 +25,7 @@ router.get('/', function(req, res, next){
 
 router.post('/login',function(req, res, next){
 	console.log("Query is : " + req.body.username);
-	User1.findOne({username:req.body.username}, function(err, userObj){
+	/*User1.findOne({username:req.body.username}, function(err, userObj){
 		if (err) {
     console.log(err);
   	} else if (userObj) {
@@ -65,9 +65,19 @@ router.post('/login',function(req, res, next){
 		console.log("Cookie Value /login: ", req.session.user);
 		if(req.body.username)
 			res.json(success);
-	});
+	});*/
+	var success = {
+		status: true,
+		pristine: true
+	}
+	loggedUser = 'SBI';
+	console.log("Username is ", loggedUser);
+	req.body.username = 'SBI';
+	var sendingData = {
+		userName: req.body.username
+	}
+	res.json(success);
 })
-
 
 router.post('/upload', function(req,res,next){
 	var form = new formidable.IncomingForm();
