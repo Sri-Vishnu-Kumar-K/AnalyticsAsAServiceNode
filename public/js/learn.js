@@ -74,7 +74,7 @@ angular.module("nautilus-learn", ['ngRoute','ngFileUpload'])
       $http.get("/get-file-path", {}).then(function(response){
           console.log(response.data.filepath)
           $scope.filepath = response.data.filepath;
-          $http.get("http://127.0.0.1:8000/Engine/getFeatures/?path=" + response.data.filepath, {}).then(function(response){
+          $http.get("https://serene-scrubland-35138.herokuapp.com/Engine/getFeatures/?path=" + response.data.filepath, {}).then(function(response){
                 console.log(response)
                 $scope.features = response.data.keys;
                 $scope.predFeature = response.data.keys[0];
@@ -106,7 +106,7 @@ angular.module("nautilus-learn", ['ngRoute','ngFileUpload'])
           var vals;
           if ($memoryFactory.getPredType() == 0) vals = "pvals"; else vals = "fvals";
           console.log("Vals value: *****: ", vals);
-          $http.get("http://127.0.0.1:8000/Engine/" + vals + "/?path=" + response.data.filepath + "&feature=" + $memoryFactory.getPredFeature(), {}).then(function(response){
+          $http.get("https://serene-scrubland-35138.herokuapp.com/Engine/" + vals + "/?path=" + response.data.filepath + "&feature=" + $memoryFactory.getPredFeature(), {}).then(function(response){
                 console.log("Feature Selection Controller: ", response);
                 $scope.features = response.data;
             }, function(response){
@@ -138,7 +138,7 @@ angular.module("nautilus-learn", ['ngRoute','ngFileUpload'])
 
 
         console.log("Initiating...");
-        var apiUrl = "http://127.0.0.1:8000/Engine/buildModel" + type + "/?data=";
+        var apiUrl = "https://serene-scrubland-35138.herokuapp.com/Engine/buildModel" + type + "/?data=";
 
         /* $http.get(apiurl + JSON.stringify(data),{}).then(function(res){
              $memoryFactory.setResult(res.data.result)
@@ -157,7 +157,7 @@ angular.module("nautilus-learn", ['ngRoute','ngFileUpload'])
 
   $http({
     method: 'POST',
-    url: 'http://localhost:3000/call-build-model',
+    url: 'https://mighty-anchorage-23383.herokuapp.com/call-build-model',
     data: 'data='+JSON.stringify(tempData),
     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
   }).then(function(res){

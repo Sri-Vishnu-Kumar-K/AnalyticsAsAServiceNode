@@ -8,7 +8,7 @@ angular.module("nautilusLanding",[])
 
   $http({
     method: 'POST',
-    url: 'http://localhost:3000/call-get-models',
+    url: 'https://mighty-anchorage-23383.herokuapp.com/call-get-models',
     data: 'data='+JSON.stringify(tempData),
     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
   }).then(function(res){

@@ -23,7 +23,7 @@ var tempData = {
 
 $http({
 	method: 'POST',
-	url: 'http://localhost:3000/call-get-models',
+	url: 'https://mighty-anchorage-23383.herokuapp.com/call-get-models',
 	data: 'data='+JSON.stringify(tempData),
 	headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 }).then(function(res){
@@ -77,7 +77,7 @@ modelName: memoryFactory.getModelName()//$scope.$parent.modelName,
 console.log("getColsData: ", getColsData);
 $http({
 method: 'POST',
-url: 'http://localhost:3000/call-get-columns',
+url: 'https://mighty-anchorage-23383.herokuapp.com/call-get-columns',
 data: 'data='+JSON.stringify(getColsData),
 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 }).then(function(res){
@@ -105,7 +105,7 @@ var data = {
 }
 $http({
 	method: 'POST',
-	url: 'http://localhost:3000/call-run-model',
+	url: 'https://mighty-anchorage-23383.herokuapp.com/call-run-model',
 	data: 'data='+JSON.stringify(data),
 	headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 }).then(function(res){
