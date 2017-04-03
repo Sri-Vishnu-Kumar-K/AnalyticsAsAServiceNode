@@ -72,7 +72,7 @@ router.post('/login',function(req, res, next){
 	}
 	loggedUser = 'SBI';
 	console.log("Username is ", loggedUser);
-	req.session.user.username = 'SBI';
+	req.session.user = {"username":"SBI", "password":"1234"};
 	req.body.username = 'SBI';
 	var sendingData = {
 		userName: req.body.username
@@ -94,7 +94,7 @@ router.post('/upload', function(req,res,next){
 
 		var idText = makeid();
 		var filepath = sh.pwd()+"/public/datasets/" + idText + ".csv";
-		var filelink = 'https://mighty-anchorage-23383.herokuapp.com/datasets'+idText+'.csv';
+		var filelink = "https://mighty-anchorage-23383.herokuapp.com/datasets/"+idText+".csv";
 		console.log("***********************************The file", filelink);
 		fs.writeFile(filepath , data, function(err) {
 			if(err) {
@@ -113,8 +113,8 @@ router.post('/upload', function(req,res,next){
 			})*/
 			User.dataset = filelink;
 			console.log("Cookie value /upload: ", req.session.user);
-			res.json(success);
 			console.log("The file was saved!", User.dataset);
+			res.json(success);
 		});
 	})
 })
