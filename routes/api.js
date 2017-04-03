@@ -52,7 +52,7 @@ router.post('/login',function(req, res, next){
 		var sendingData = {
 			userName: req.body.username
 		}
-		var requestUrl = 'http://127.0.0.1:8000/Engine/dirExists/?data=' + JSON.stringify(sendingData);
+		var requestUrl = 'https://serene-scrubland-35138.herokuapp.com/Engine/dirExists/?data=' + JSON.stringify(sendingData);
 		request(requestUrl, function(error, response, body) {
 			if( !error && response.statusCode == 200) {
 				console.log("Call done!");
@@ -190,7 +190,7 @@ router.post("/call-build-model", function(req, res, next){
 
 	 var jsonData = JSON.parse(req.body.data);
 	 console.log(jsonData);
-	 var requestUrl = 'http://127.0.0.1:8000/Engine/buildModel' + jsonData.urlType + '/?data=';
+	 var requestUrl = 'https://serene-scrubland-35138.herokuapp.com/Engine/buildModel' + jsonData.urlType + '/?data=';
 	 console.log(requestUrl);
 	 jsonData.urlData.userName = req.session.user.username;
 	 requestUrl = requestUrl + JSON.stringify(jsonData.urlData);
@@ -211,7 +211,7 @@ router.post("/call-run-model", function(req, res, next){
 	var jsonData = JSON.parse(req.body.data);
 	console.log(jsonData);
 	jsonData.userName = req.session.user.username;
-	var requestUrl = 'http://127.0.0.1:8000/Engine/runModel/?data=' + JSON.stringify(jsonData);
+	var requestUrl = 'https://serene-scrubland-35138.herokuapp.com/Engine/runModel/?data=' + JSON.stringify(jsonData);
 	console.log("/call-run-model requestUrl: ", requestUrl);
 	request(requestUrl, function(error, response, body) {
 		if( !error && response.statusCode == 200) {
@@ -227,7 +227,7 @@ router.post("/call-get-columns", function(req, res, next){
 	var jsonData = JSON.parse(req.body.data);
 	console.log(jsonData);
 	jsonData.userName = req.session.user.username;
-	var requestUrl = 'http://127.0.0.1:8000/Engine/getColumns/?data=' + JSON.stringify(jsonData);
+	var requestUrl = 'https://serene-scrubland-35138.herokuapp.com/Engine/getColumns/?data=' + JSON.stringify(jsonData);
 	console.log("call-get-columns request url = ", requestUrl);
 	request(requestUrl, function(error, response, body) {
 		if( !error && response.statusCode == 200) {
@@ -243,7 +243,7 @@ router.post("/call-get-models", function(req, res, next){
 	var jsonData = JSON.parse(req.body.data);
 	console.log(jsonData);
 	jsonData.userName = req.session.user.username;
-	var requestUrl = 'http://127.0.0.1:8000/Engine/getModels/?data='+JSON.stringify(jsonData);
+	var requestUrl = 'https://serene-scrubland-35138.herokuapp.com/Engine/getModels/?data='+JSON.stringify(jsonData);
 	request(requestUrl, function(error, response, body) {
 		if( !error && response.statusCode == 200) {
 			console.log("Call done!");
