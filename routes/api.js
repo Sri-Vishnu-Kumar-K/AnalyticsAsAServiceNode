@@ -92,7 +92,7 @@ router.post('/upload', function(req,res,next){
 		data = fs.readFileSync(files.file.path);
 
 		var idText = makeid();
-		var filepath = sh.pwd()+"/datasets/" + idText + ".csv";
+		var filepath = sh.pwd()+"/public/datasets/" + idText + ".csv";
 		console.log("***********************************The file", filepath);
 		fs.writeFile(filepath , data, function(err) {
 			if(err) {
