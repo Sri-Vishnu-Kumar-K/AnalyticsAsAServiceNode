@@ -72,7 +72,7 @@ angular.module("nautilus-learn", ['ngRoute','ngFileUpload'])
       $scope.filepath = "";
       console.log("step-2");
       $http.get("/get-file-path", {}).then(function(response){
-          console.log(response.data.filepath)
+          console.log("********", response.data);
           $scope.filepath = response.data.filepath;
           $http.get("https://serene-scrubland-35138.herokuapp.com/Engine/getFeatures/?path=" + response.data.filepath, {}).then(function(response){
                 console.log(response)
