@@ -93,7 +93,7 @@ router.post('/upload', function(req,res,next){
 
 		var idText = makeid();
 		var filepath = sh.pwd()+"/datasets/" + idText + ".csv";
-
+		console.log("***********************************The file", filepath);
 		fs.writeFile(filepath , data, function(err) {
 			if(err) {
 				console.log(err);
